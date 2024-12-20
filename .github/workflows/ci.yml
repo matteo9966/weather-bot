@@ -6,11 +6,12 @@ on:
   push:
     branches:
       - main
+      - develop
     
 jobs:
  
  lint-the-code:
-  name: 'Lint the code'
+  name: 'Lint check the code'
   runs-on: ubuntu-latest
   steps:
     - name: 'Checkout the code'
