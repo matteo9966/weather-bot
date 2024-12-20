@@ -3,5 +3,7 @@ export default {
   transform: {
     "^.+.tsx?$": ["ts-jest",{}],
   },
+  setupFiles:["./setupTest.js"],
+  testPathIgnorePatterns: [ "^.+.js"]
   
 };
