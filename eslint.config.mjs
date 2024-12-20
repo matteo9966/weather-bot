@@ -10,7 +10,8 @@ export default tseslint.config(
     rules:{
         semi:"error",
         "arrow-body-style": ["error", "always"],
-        "no-console":"warn"
+        "no-console":"warn",
+        "camelcase":"warn"
     },
     ignores: ["**/dist/**"]
   }
