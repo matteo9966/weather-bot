@@ -1,0 +1,22 @@
+name: Continuous Integration Workflow for Telegram Weather Bot
+
+on:
+  workflow_dispatch:
+  
+  push:
+    branches:
+      - main
+    
+jobs:
+ 
+ lint-the-code:
+  name: 'Lint the code'
+  runs-on: ubuntu-latest
+  steps:
+    - name: 'Checkout the code'
+      uses: actions/checkout@v4
+    - name: 'Install dependencies'
+      run: npm install
+    - name: 'Lint the code'
+      run: npm run lint
+ 
