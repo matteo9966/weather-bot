@@ -35,4 +35,25 @@ jobs:
       run: npm install
     - name: 'Lint the code'
       run: npm run lint
+
+ run-tests:
+    name: 'Test the code'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12.0'
+      - name: 'Checkout the code'
+        uses: actions/checkout@v4
+      - name: Debug branch info
+        run: |
+          echo "GitHub ref: ${{ github.ref }}"
+          echo "PR head branch: ${{ github.head_ref }}"
+          echo "PR base branch: ${{ github.base_ref }}"
+          git branch --show-current  
+      - name: 'Install dependencies'
+        run: npm install
+      - name: 'Test the code'
+        run: npm run test
  
