@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import {router as indexRouter} from './routes/index';
 import {router as checkRouter} from './routes/check';
+import {router as weatherRouter} from './routes/weather';
 const app = express();
 app.use(logger('dev'));
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/check', checkRouter);
+app.use('/weather',weatherRouter);
 export {app};
 
 
