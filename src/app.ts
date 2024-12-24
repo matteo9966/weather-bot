@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -6,7 +7,7 @@ import { router as indexRouter } from "./routes/index";
 import { router as checkRouter } from "./routes/check";
 import { router as weatherRouter } from "./routes/weather";
 import { logMiddleware } from "./core/middleware/log.middleware";
-import "express-async-errors";
+import errorMiddleware from "./core/middleware/error/error.middleware";
 const app = express();
 app.use(logMiddleware);
 app.use(logger("dev"));
@@ -17,4 +18,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/check", checkRouter);
 app.use("/weather", weatherRouter);
+
+app.use(errorMiddleware);
 export { app };
