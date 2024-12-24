@@ -1,12 +1,12 @@
-import { GetCurrentResponse } from "../models/response/getCurrent.model";
+import { GetCurrent } from "../models/weatherAPIresponses/getCurrent.model";
 import { HttpService, httpService } from "./http.service";
 import api from "../../../config/api.json";
 class WeatherService {
   constructor(private httpService: HttpService) {}
 
-  async getCurrentWeather(city: string): Promise<GetCurrentResponse | null> {
+  async getCurrentWeather(city: string): Promise<GetCurrent | null> {
     try {
-      return this.httpService.get<GetCurrentResponse>(
+      return this.httpService.get<GetCurrent>(
         api.weatherApi.current
           .replace("{q}", city)
           .replace("{key}", process.env.WEATHER_TOKEN),

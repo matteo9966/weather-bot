@@ -1,10 +1,13 @@
-export interface BaseResponse<T> {
-  error: Error;
+export interface BaseResponseWithError {
+  error: string;
+  data: null;
+  status: number;
+}
+
+export interface BaseResponseWithData<T> {
+  error: null;
   data: T;
   status: number;
 }
 
-export interface Error {
-  code: number;
-  message: string;
-}
+export type BaseResponse<T> = BaseResponseWithError | BaseResponseWithData<T>;

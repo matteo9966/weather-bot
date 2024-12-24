@@ -6,6 +6,7 @@ import { router as indexRouter } from "./routes/index";
 import { router as checkRouter } from "./routes/check";
 import { router as weatherRouter } from "./routes/weather";
 import { logMiddleware } from "./core/middleware/log.middleware";
+import "express-async-errors";
 const app = express();
 app.use(logMiddleware);
 app.use(logger("dev"));
