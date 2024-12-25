@@ -7,8 +7,7 @@
     "watch": "ts-node-dev --respawn --transpile-only --env-file=.env ./src/bin/www.ts",
     "lint": "eslint ./**/*.ts",
     "test": "jest --detectOpenHandles",
-    "prettier": "prettier --write .",
-    "prepare": "husky install"
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
