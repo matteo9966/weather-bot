@@ -2,7 +2,7 @@ name: Continuous Integration Workflow for Telegram Weather Bot
 
 on:
   workflow_dispatch:
-  
+
   push:
     branches:
       - main
@@ -12,70 +12,67 @@ on:
     branches:
       - main
       - develop
-    
-jobs:
- 
- lint-the-code:
-  name: 'Lint check the code'
-  runs-on: ubuntu-latest
-  steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22.12.0'
-    - name: 'Checkout the code'
-      uses: actions/checkout@v4
-    - name: Debug branch info
-      run: |
-          echo "GitHub ref: ${{ github.ref }}"
-          echo "PR head branch: ${{ github.head_ref }}"
-          echo "PR base branch: ${{ github.base_ref }}"
-          git branch --show-current  
-    - name: 'Install dependencies'
-      run: npm install
-    - name: 'Lint the code'
-      run: npm run lint
 
- run-tests:
-    name: 'Test the code'
+jobs:
+  lint-the-code:
+    name: "Lint check the code"
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.12.0'
-      - name: 'Checkout the code'
+          node-version: "22.12.0"
+      - name: "Checkout the code"
         uses: actions/checkout@v4
       - name: Debug branch info
         run: |
           echo "GitHub ref: ${{ github.ref }}"
           echo "PR head branch: ${{ github.head_ref }}"
           echo "PR base branch: ${{ github.base_ref }}"
-          git branch --show-current  
-      - name: 'Install dependencies'
+          git branch --show-current
+      - name: "Install dependencies"
         run: npm install
-      - name: 'Test the code'
-        run: npm run test
+      - name: "Lint the code"
+        run: npm run lint
 
- check-if-it-builds:
-  name: 'Check if it builds'
-  runs-on: ubuntu-latest
-  steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22.12.0'
-    - name: 'Checkout the code'
-      uses: actions/checkout@v4
-    - name: Debug branch info
-      run: |
+  run-tests:
+    name: "Test the code"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+      - name: "Checkout the code"
+        uses: actions/checkout@v4
+      - name: Debug branch info
+        run: |
           echo "GitHub ref: ${{ github.ref }}"
           echo "PR head branch: ${{ github.head_ref }}"
           echo "PR base branch: ${{ github.base_ref }}"
-          git branch --show-current  
-    - name: 'Install dependencies'
-      run: npm install
-    - name: 'Build the code'
-      run: npm run build
-    
- 
+          git branch --show-current
+      - name: "Install dependencies"
+        run: npm install
+      - name: "Test the code"
+        run: npm run test
+
+  check-if-it-builds:
+    name: "Check if it builds"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+      - name: "Checkout the code"
+        uses: actions/checkout@v4
+      - name: Debug branch info
+        run: |
+          echo "GitHub ref: ${{ github.ref }}"
+          echo "PR head branch: ${{ github.head_ref }}"
+          echo "PR base branch: ${{ github.base_ref }}"
+          git branch --show-current
+      - name: "Install dependencies"
+        run: npm install
+      - name: "Build the code"
+        run: npm run build

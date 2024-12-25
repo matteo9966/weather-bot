@@ -1,7 +1,7 @@
 export default {
   testEnvironment: "node",
   transform: {
-    "^.+.tsx?$": ["ts-jest",{}],
+    "^.+.tsx?$": ["@swc/jest",{}],
   },
   setupFiles:["./setupTest.js"],
   testPathIgnorePatterns: [ "^.+.js"]

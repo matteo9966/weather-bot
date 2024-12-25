@@ -1,5 +1,5 @@
 {
     "weatherApi":{
-        "current":"http://api.weatherapi.com/v1/current.json?key={key}&q={q}&lang=it&aqi=no"
+        "current":"https://api.weatherapi.com/v1/current.json?key={key}&q={q}&lang=it&aqi=no"
     }
 }

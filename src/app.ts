@@ -1,19 +1,21 @@
-import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import {router as indexRouter} from './routes/index';
-import {router as checkRouter} from './routes/check';
-import {router as weatherRouter} from './routes/weather';
+import "express-async-errors";
+import express from "express";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import { router as checkRouter } from "./routes/check";
+import { router as weatherRouter } from "./routes/weather";
+import { logMiddleware } from "./core/middleware/log.middleware";
+import errorMiddleware from "./core/middleware/error/error.middleware";
 const app = express();
-app.use(logger('dev'));
+app.use(logMiddleware);
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', indexRouter);
-app.use('/check', checkRouter);
-app.use('/weather',weatherRouter);
-export {app};
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/check", checkRouter);
+app.use("/weather", weatherRouter);
 
-
+app.use(errorMiddleware);
+export { app };

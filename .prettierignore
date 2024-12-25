@@ -1,0 +1,17 @@
+# Ignore artifacts:
+build
+coverage
+node_modules
+
+# Ignore all JavaScript files:
+*.js
+
+# Ignore all map files:
+*.map
+
+# Ignore specific files:
+.env
+dist
+*.md
+*.mjs
+*.json

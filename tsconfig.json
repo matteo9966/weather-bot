@@ -16,7 +16,8 @@
     "sourceMap": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*"], 
+  "ts-node": {  "files": true }, // add
+  "include": ["src/**/*","/src/core/types/environment.d.ts"], 
   "exclude": ["node_modules", "dist"],
   
 }
