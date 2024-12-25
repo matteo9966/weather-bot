@@ -6,7 +6,7 @@ class WeatherService {
 
   async getCurrentWeather(city: string): Promise<GetCurrent | null> {
     try {
-      return this.httpService.get<GetCurrent>(
+      return await this.httpService.get<GetCurrent>(
         api.weatherApi.current
           .replace("{q}", city)
           .replace("{key}", process.env.WEATHER_TOKEN),

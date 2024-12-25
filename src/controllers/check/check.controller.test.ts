@@ -1,7 +1,10 @@
-import { expect, test, describe } from "@jest/globals";
+import { expect, describe } from "@jest/globals";
+import { app } from "../../app";
+import supertest from "supertest";
 
-describe("test description", () => {
-  test("test body", () => {
-    expect(1).toBe(1);
+describe("/check response", () => {
+  it("should return status 200", async () => {
+    const response = await supertest(app).get("/check");
+    expect(response.status).toBe(200);
   });
 });
