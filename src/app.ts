@@ -7,6 +7,7 @@ import { router as checkRouter } from "./routes/check";
 import { router as weatherRouter } from "./routes/weather";
 import { logMiddleware } from "./core/middleware/log.middleware";
 import errorMiddleware from "./core/middleware/error/error.middleware";
+import { TelegramBot } from "./core/services/bot.service";
 const app = express();
 app.use(logMiddleware);
 app.use(logger("dev"));
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/check", checkRouter);
 app.use("/weather", weatherRouter);
-
+const telegramBot = TelegramBot.getInstance();
+telegramBot.start();
 app.use(errorMiddleware);
 export { app };

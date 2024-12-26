@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       WEATHER_TOKEN: string;
       PORT?: string;
+      BOT_TOKEN: string;
     }
   }
 }
